@@ -1,20 +1,20 @@
 pipeline {
     agent any //Master-Slave
-    stages {
-        stage('build'){
-            steps {
-                sh 'mvn install'
-            }
-        }
+	stages {
+		stage('build'){
+			steps {
+				sh 'mvn install'
+			}
+		}
 		stage('test'){
-            steps {
-                echo 'Testing APP'
-            }
-        }
+			steps {
+				echo 'Testing APP'
+			}
+		}
 		stage('deploy'){
-            steps {
-                echo 'Deploying...'
-            }
-        }
-    }    
+			steps {
+				echo 'Deploying...'
+			}
+		}
+	}
 }
