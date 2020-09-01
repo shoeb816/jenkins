@@ -1,3 +1,5 @@
+def gv
+	
 pipeline {
 	agent any //Master-Slave
 	parameters{
@@ -8,10 +10,18 @@ pipeline {
 	
 	}
 	stages {
+		stage("init"){
+			steps{
+				script{
+					gv = load "script.groovy"
+				}
+			}
+		}
 		stage('build'){
 			steps {
-				echo 'Building...'
-				//sh 'mvn install'
+				script{
+					gv.buildApp()
+				}
 			}
 		}
 		stage('test'){
@@ -20,14 +30,15 @@ pipeline {
 				params.executeTests == true 
 				}
 			}
-			steps {
-				echo 'Testing APP'
-			}
+			script{
+					gv.testApp()
+				}
 		}
 		stage('deploy'){
 			steps {
-				echo 'Deploying...'
-				echo "deployment version ${params.VERSION}"
+				script{
+					gv.deployApp()
+				}
 			}
 		}
 	}
