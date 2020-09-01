@@ -1,7 +1,7 @@
 pipeline {
 	agent any //Master-Slave
 	parameters{
-		string(name:'Version',defaultValue:'',description:'cersion to deploy on prod')
+		//string(name:'Version',defaultValue:'',description:'cersion to deploy on prod')
 		choice(name:'VERSION',choices:['1.1.0','1.2.0','1.3.0'], description:'')
 		boleanParam(name:'executeTests',defaultValue:true, description:'')
 		
