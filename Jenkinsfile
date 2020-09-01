@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build'){
             steps {
-                sh 'npl install'
+                sh 'mvn install'
             }
         }
 		stage('test'){
